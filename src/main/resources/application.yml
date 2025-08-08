@@ -1,0 +1,9 @@
+spring:
+  application.name: katsudon-binder-server
+  data.mongodb.uri: ${config.mongo.db.uri}
+
+server.error.include-message: always
+
+logging.structured.format:
+  console: ecs
+  file: ecs
