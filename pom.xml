@@ -16,6 +16,8 @@
   <url/>
   <properties>
     <java.version>23</java.version>
+    <maven.compiler.source>23</maven.compiler.source>
+    <maven.compiler.target>23</maven.compiler.target>
   </properties>
   <dependencies>
     <dependency>
@@ -51,18 +53,6 @@
               <artifactId>lombok</artifactId>
             </path>
           </annotationProcessorPaths>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <configuration>
-          <excludes>
-            <exclude>
-              <groupId>org.projectlombok</groupId>
-              <artifactId>lombok</artifactId>
-            </exclude>
-          </excludes>
         </configuration>
       </plugin>
     </plugins>
