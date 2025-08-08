@@ -35,7 +35,7 @@ public class CardLookupApiService {
 
   public List<String> pullPokemonNames() {
     HttpRequest request = HttpRequest.newBuilder()
-      .uri(URI.create("http://localhost:3001/card-lookup/names")) // Set the target URI
+      .uri(URI.create("https://katsudon-pkm-lookup-server-839d85c572b3.herokuapp.com/card-lookup/names"))
       .GET() // Specify the GET method
       .build();
 
@@ -65,7 +65,7 @@ public class CardLookupApiService {
 
     String pokemonNameEncoded = URLEncoder.encode(pokemonName, StandardCharsets.UTF_8);
     String existingIdsEncoded = URLEncoder.encode(String.join(",", existingIds), StandardCharsets.UTF_8);
-    URI link = URI.create("http://localhost:3001/card-lookup/jp?name=" + pokemonNameEncoded + "&existingIds=" + existingIdsEncoded);
+    URI link = URI.create("https://katsudon-pkm-lookup-server-839d85c572b3.herokuapp.com/card-lookup/jp?name=" + pokemonNameEncoded + "&existingIds=" + existingIdsEncoded);
     log.info("{}", link);
     HttpRequest request = HttpRequest.newBuilder()
       .uri(link) // Set the target URI

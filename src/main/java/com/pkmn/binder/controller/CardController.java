@@ -5,7 +5,10 @@ import com.pkmn.binder.repository.CardRepository;
 import com.pkmn.binder.service.CardLookupApiService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,8 +24,7 @@ public class CardController {
 
   @GetMapping("/data")
   public Map<String, Integer> seed() {
-//    List<String> names = cardLookupApiService.pullPokemonNames();
-    List<String> names = List.of("Zapdos");
+    List<String> names = cardLookupApiService.pullPokemonNames();
 
     Map<String, Integer> cardCount = new HashMap<>();
     for (String name : names) {
@@ -38,12 +40,8 @@ public class CardController {
     return cardCount;
   }
 
-  @DeleteMapping("/delete")
-  public long deleteCard(@RequestParam("name") String name) {
-    return cardRepository.deleteByName(name);
-  }
-  @GetMapping("/test")
-  public List<String> getCardIds(){
-    return cardRepository.findAll().stream().map(Card::getCardId).toList();
+  @GetMapping("/pokemon/{pokemonName}")
+  public List<Card> getCardIds(@PathVariable String pokemonName) {
+    return cardRepository.findByName(pokemonName);
   }
 }
